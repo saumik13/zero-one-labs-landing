@@ -2,7 +2,7 @@
 body {
   background-color: #000;
   color: #ffffff;
-  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+   font-family: 'Courier New', Courier, monospace;
   line-height: 1.6;
   margin: 0;
   padding: 0;
@@ -24,6 +24,7 @@ main {
       text-align: center;
       letter-spacing: 1px;
       margin-bottom: 3rem;
+     color: #00ff66;
     }
 
 p {
@@ -33,13 +34,13 @@ p {
 }
 
 /* Footer */
+/* Footer */
 footer {
   text-align: center;
   font-size: 0.9rem;
   padding: 1rem 0;
-  color: #888;
-  border-top: 1px solid #333;
+  color: #00ff66;
+  border-top: 1px solid #00ff66;
   margin-top: auto;
-  letter-spacing: 0.5px;
 }
 
