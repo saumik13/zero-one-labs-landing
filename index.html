@@ -3,68 +3,247 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zero One Labs Inc</title>
-  <style>
-    /* Sleek terminal style with improved readability */
-    body {
-      background-color: #000;
-      color: #ffffff;
-      font-family: 'Courier New', Courier, monospace;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    main {
-      max-width: 700px;
-      margin: 5rem auto 3rem auto;
-      padding: 0 1rem;
-      flex: 1;
-    }
-    header h1 {
-      font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
-      font-size: 2.8rem;
-      text-align: center;
-      letter-spacing: 1px;
-      margin-bottom: 3rem;
-      color: #00ff66;
-    }
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: #ffffff;
-    }
-    /* Footer */
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      padding: 1rem 0;
-      color: #00ff66;
-      border-top: 1px solid #00ff66;
-      margin-top: auto;
-    }
-  </style>
+  <title>Sisypho - Natural Language RPA SDK</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
     <header>
-      <h1>Zero One Labs Inc.</h1>
+      <h1>sisypho</h1>
+      <p class="tagline">Open source SDK for natural language RPA and custom CUA tools</p>
     </header>
-    <section>
+    
+    <section class="intro">
       <p>
-        Zero One Labs Inc. is an AI product company building tools for the future of work.
-        We are the creators of Sisypho, which is changing how people use their personal computer for work. 
-      </p>
-      <p>
-        Our team consists of engineers who have previously built and scaled products used by millions of people
-        at companies like Meta, Instacart, and Snap. If you're excited about tackling hard problems at the earliest stage and helping transform how people use their computer for work, please reach out to founders@zero-one-lab.com.
+        Sisypho transforms natural language instructions into executable automation workflows. 
+        Build deterministic RPA flows that humans can run directly, or create custom tools for 
+        more reliable and faster CUA agents.
       </p>
     </section>
+
+    <section class="quick-start">
+      <h2>Quick Start</h2>
+      <div class="install-options">
+        <div class="install-option">
+          <h3>Installation</h3>
+          <div class="code-block">
+            <pre><code>pip install sisypho</code></pre>
+          </div>
+        </div>
+        <div class="install-option">
+          <h3>CLI Usage</h3>
+          <div class="code-block">
+            <pre><code># Create a workflow with natural language
+python -m sisypho create --task "open chrome and type hello"
+
+# Create with recording
+python -m sisypho create --task "open chrome and type hello" --record
+
+# Run a workflow
+python -m sisypho run --workflow workflow.json</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="example">
+      <h2>Example Usage</h2>
+      <div class="example-tabs">
+        <div class="example-tab">
+          <h3>Python API</h3>
+          <div class="code-block">
+            <pre><code>import asyncio
+from sisypho.utils import RecorderContext, await_task_completion, RpaWorkflow, CuaTool
+
+async def main():
+    # Define your automation task in natural language
+    task_prompt = """Open a CSV file from Downloads in Microsoft Excel, 
+    calculate the total sales column, and paste the result into a new Apple Notes entry. 
+    Use deterministic steps without relying on screen coordinates."""
+
+    with RecorderContext() as recorder:
+        await_task_completion()
+
+    recording = recorder.get_recording()
+    workflow = RpaWorkflow(recording, task_prompt)
+    
+    await workflow.generate_code()
+    result = workflow.run_workflow()
+    workflow.save()</code></pre>
+          </div>
+        </div>
+        <div class="example-tab">
+          <h3>Command Line</h3>
+          <div class="code-block">
+            <pre><code># Same workflow using CLI
+python -m sisypho create --task "Open a CSV file from Downloads in Microsoft Excel, calculate the total sales column, and paste the result into a new Apple Notes entry" --record
+
+# Run the created workflow
+python -m sisypho run --workflow workflow.json
+
+# Or run interactively
+python -m sisypho run --interactive</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <h2>Core Features</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Accessibility-Based Automation</h3>
+          <p>Uses UI accessibility APIs and semantic understanding instead of fragile coordinates or selectors</p>
+        </div>
+        <div class="feature">
+          <h3>Deterministic Workflows</h3>
+          <p>Generate reliable, reproducible automation sequences</p>
+        </div>
+        <div class="feature">
+          <h3>CUA Integration</h3>
+          <p>Build reliable, deterministic tools that CUA agents can use for faster automation</p>
+        </div>
+        <div class="feature">
+          <h3>Recording & Playback</h3>
+          <p>Capture semantic interactions and convert them to accessibility-based workflows</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cli-reference">
+      <h2>CLI Reference</h2>
+      <div class="cli-help">
+        <div class="code-block">
+          <pre><code>$ python -m sisypho --help
+
+usage: python -m sisypho [-h] {create,run} ...
+
+Sisypho SDK - UI automation, workflow recording, and skill execution
+
+positional arguments:
+  {create,run}  Available commands
+    create      Create a new workflow (optionally with recording)
+    run         Run an existing workflow
+
+options:
+  -h, --help    show this help message and exit
+
+Examples:
+  python -m sisypho create --task "open chrome and type hello"
+  python -m sisypho create --task "open chrome and type hello" --record
+  python -m sisypho run --workflow workflow.json
+  python -m sisypho run --interactive</code></pre>
+        </div>
+      </div>
+      
+      <div class="cli-commands">
+        <div class="cli-command">
+          <h3>create</h3>
+          <p>Create new automation workflows from natural language descriptions</p>
+          <div class="code-block">
+            <pre><code># Basic workflow creation
+python -m sisypho create --task "open notepad and write hello world"
+
+# Create with user interaction recording
+python -m sisypho create --task "fill out contact form" --record</code></pre>
+          </div>
+        </div>
+        
+        <div class="cli-command">
+          <h3>run</h3>
+          <p>Execute existing workflows or start interactive sessions</p>
+          <div class="code-block">
+            <pre><code># Run a saved workflow
+python -m sisypho run --workflow my_workflow.json
+
+# Interactive mode for testing
+python -m sisypho run --interactive</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="api-reference">
+      <h2>Python API Reference</h2>
+      <div class="api-section">
+        <h3>RecorderContext</h3>
+        <p>Context manager for capturing user interactions</p>
+        <div class="code-block">
+          <pre><code>with RecorderContext() as recorder:
+    # Your interactions are recorded here
+    recording = recorder.get_recording()</code></pre>
+        </div>
+      </div>
+      
+      <div class="api-section">
+        <h3>RpaWorkflow</h3>
+        <p>Main workflow orchestrator for automation tasks</p>
+        <div class="code-block">
+          <pre><code>workflow = RpaWorkflow(recording, task_prompt)
+await workflow.generate_code()
+result = workflow.run_workflow()</code></pre>
+        </div>
+      </div>
+
+      <div class="api-section">
+        <h3>CuaTool</h3>
+        <p>Tools for integrating deterministic workflows with CUA agents</p>
+        <div class="code-block">
+          <pre><code>cua_tools = CuaTool(recording, task_prompt)
+# Use with your own CUA implementation</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="getting-started">
+      <h2>Getting Started</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-number">1</span>
+          <div>
+            <h4>Install</h4>
+            <p><code>pip install sisypho</code></p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <div>
+            <h4>Create Workflow</h4>
+            <p>Use CLI: <code>python -m sisypho create --task "your task"</code><br>
+            Or Python API with RecorderContext</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <div>
+            <h4>Run & Automate</h4>
+            <p>Execute with <code>python -m sisypho run</code><br>
+            Or programmatically via RpaWorkflow</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="links">
+      <div class="link-grid">
+        <a href="#" class="link-card">
+          <h3>Documentation</h3>
+          <p>Complete API reference and guides</p>
+        </a>
+        <a href="#" class="link-card">
+          <h3>GitHub</h3>
+          <p>Source code and examples</p>
+        </a>
+        <a href="#" class="link-card">
+          <h3>Examples</h3>
+          <p>Sample workflows and use cases</p>
+        </a>
+      </div>
+    </section>
   </main>
+  
   <footer>
-    © 2025 Zero One Labs Inc. &nbsp;|&nbsp; Headquartered in Toronto, Canada
+    <p>Built by <a href="mailto:founders@zero-one-lab.com">Zero One Labs</a></p>
   </footer>
 </body>
 </html>
