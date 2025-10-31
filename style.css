@@ -20,23 +20,23 @@ body {
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 3rem;
   flex: 1;
 }
 
 /* Header */
 header {
   text-align: center;
-  padding: 4rem 0 2rem 0;
+  padding: 6rem 0 3rem 0;
   border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
 }
 
 header h1 {
   font-size: 3.5rem;
   font-weight: 300;
   letter-spacing: -0.02em;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: #1a1a1a;
 }
 
@@ -52,21 +52,21 @@ header h1 {
 h2 {
   font-size: 2rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   color: #1a1a1a;
 }
 
 h3 {
   font-size: 1.25rem;
   font-weight: 500;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   color: #1a1a1a;
 }
 
 h4 {
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   color: #1a1a1a;
 }
 
@@ -79,12 +79,12 @@ p {
 
 /* Sections */
 section {
-  margin-bottom: 4rem;
+  margin-bottom: 8rem;
 }
 
 .intro {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 8rem;
 }
 
 .intro p {
@@ -100,11 +100,11 @@ section {
   border: 1px solid #e9ecef;
   border-radius: 8px;
   overflow-x: auto;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 }
 
 .code-block pre {
-  padding: 1.5rem;
+  padding: 2rem;
   font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
   font-size: 0.875rem;
   line-height: 1.6;
@@ -130,19 +130,19 @@ code {
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 2.5rem;
+  margin-top: 3rem;
 }
 
 .feature {
-  padding: 2rem;
+  padding: 2.5rem;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
   background-color: #fafafa;
 }
 
 .feature h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .feature p {
@@ -154,12 +154,12 @@ code {
 .install-options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 3rem;
+  margin-top: 3rem;
 }
 
 .install-option h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   font-size: 1.125rem;
 }
 
@@ -167,28 +167,66 @@ code {
 .example-tabs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 3rem;
+  margin-top: 3rem;
 }
 
 .example-tab h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   font-size: 1.125rem;
+  color: #1a1a1a;
+}
+
+/* MCP Tools Section */
+.mcp-tools {
+  background-color: #fafafa;
+  padding: 4rem 3rem;
+  margin: 6rem -3rem;
+  border-radius: 12px;
+}
+
+.mcp-feature {
+  margin-bottom: 4rem;
+}
+
+.mcp-feature:last-child {
+  margin-bottom: 0;
+}
+
+.mcp-feature ul {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.mcp-feature li {
+  margin-bottom: 0.75rem;
+  color: #4a4a4a;
+}
+
+.tool-examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.tool-category h4 {
+  margin-bottom: 1rem;
   color: #1a1a1a;
 }
 
 /* CLI Reference */
 .cli-help {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .cli-commands {
   display: grid;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .cli-command {
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
   border-bottom: 1px solid #e5e5e5;
 }
 
@@ -200,21 +238,21 @@ code {
   font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
   background-color: #f6f8fa;
   display: inline-block;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 4px;
   font-size: 1rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .cli-command p {
   color: #666;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 /* API Reference */
 .api-section {
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
   border-bottom: 1px solid #e5e5e5;
 }
 
@@ -224,21 +262,21 @@ code {
 
 .api-section p {
   color: #666;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Getting Started Steps */
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 3rem;
+  margin-top: 3rem;
 }
 
 .step {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .step-number {
@@ -256,7 +294,7 @@ code {
 }
 
 .step div h4 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .step div p {
@@ -268,13 +306,13 @@ code {
 .link-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
 .link-card {
   display: block;
-  padding: 2rem;
+  padding: 2.5rem;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
   text-decoration: none;
@@ -288,7 +326,7 @@ code {
 }
 
 .link-card h3 {
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   color: #1a1a1a;
 }
 
@@ -297,12 +335,27 @@ code {
   color: #666;
 }
 
+.github-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.github-logo svg {
+  color: #1a1a1a;
+  transition: color 0.2s ease;
+}
+
+.link-card:hover .github-logo svg {
+  color: #333;
+}
+
 /* Footer */
 footer {
   text-align: center;
-  padding: 3rem 0 2rem 0;
+  padding: 4rem 0 3rem 0;
   border-top: 1px solid #e5e5e5;
-  margin-top: 4rem;
+  margin-top: 6rem;
 }
 
 footer p {
@@ -323,12 +376,12 @@ footer a:hover {
 /* Responsive design */
 @media (max-width: 768px) {
   main {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   }
   
   header {
-    padding: 2rem 0 1rem 0;
-    margin-bottom: 2rem;
+    padding: 3rem 0 2rem 0;
+    margin-bottom: 4rem;
   }
   
   header h1 {
@@ -344,16 +397,22 @@ footer a:hover {
   }
   
   section {
-    margin-bottom: 2.5rem;
+    margin-bottom: 4rem;
   }
   
   .feature-grid,
   .steps,
   .link-grid,
   .install-options,
-  .example-tabs {
+  .example-tabs,
+  .tool-examples {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
+  }
+  
+  .mcp-tools {
+    margin: 4rem -1.5rem;
+    padding: 3rem 1.5rem;
   }
   
   .example-tabs {
@@ -361,8 +420,21 @@ footer a:hover {
   }
   
   .code-block pre {
-    padding: 1rem;
+    padding: 1.5rem;
     font-size: 0.8rem;
+  }
+  
+  .feature {
+    padding: 2rem;
+  }
+  
+  .link-card {
+    padding: 2rem;
+  }
+  
+  footer {
+    padding: 3rem 0 2rem 0;
+    margin-top: 4rem;
   }
 }
 
