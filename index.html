@@ -3,323 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sisypho - Natural Language RPA SDK</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Zero One Labs Inc</title>
+  <style>
+    /* Sleek terminal style with improved readability */
+    body {
+      background-color: #000;
+      color: #ffffff;
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      max-width: 700px;
+      margin: 5rem auto 3rem auto;
+      padding: 0 1rem;
+      flex: 1;
+    }
+    header h1 {
+      font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+      font-size: 2.8rem;
+      text-align: center;
+      letter-spacing: 1px;
+      margin-bottom: 3rem;
+      color: #00ff66;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #ffffff;
+    }
+    a {
+      color: #00ff66;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #00cc52;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 1rem 0;
+      color: #00ff66;
+      border-top: 1px solid #00ff66;
+      margin-top: auto;
+    }
+  </style>
 </head>
 <body>
   <main>
     <header>
-      <h1>sisypho</h1>
-      <p class="tagline">Open source SDK for natural language RPA and custom CUA tools</p>
+      <h1>Zero One Labs Inc.</h1>
     </header>
-    
-    <section class="intro">
+    <section>
       <p>
-        Sisypho transforms natural language instructions into executable automation workflows. 
-        Build deterministic RPA flows that humans can run directly, or create custom tools for 
-        more reliable and faster CUA agents.
+        Zero One Labs Inc. is an AI product company building tools for the future of work.
+        We have built <a href="https://github.com/HarishgunaS/sisypho-sdk" target="_blank">Sisypho SDK</a>,
+        a deterministic AI powered RPA solution, and <a href="https://www.trykanly.com" target="_blank">Kanly</a>,
+        a civil engineering copilot to speed up permit reviewing.
+      </p>
+      <p>
+        Our team consists of engineers who have previously built and scaled products used by millions of people
+        at companies like Meta, Instacart, and Snap. If you're excited about tackling hard problems at the earliest stage and helping transform how people use their computer for work, please reach out to founders@zero-one-lab.com.
       </p>
     </section>
-
-    <section class="quick-start">
-      <h2>Quick Start</h2>
-      <div class="install-options">
-        <div class="install-option">
-          <h3>Installation</h3>
-          <div class="code-block">
-            <pre><code>pip install sisypho</code></pre>
-          </div>
-        </div>
-        <div class="install-option">
-          <h3>CLI Usage</h3>
-          <div class="code-block">
-            <pre><code># Create a workflow with natural language
-python -m sisypho create --task "open chrome and type hello"
-
-# Create with recording
-python -m sisypho create --task "open chrome and type hello" --record
-
-# Run a workflow
-python -m sisypho run --workflow workflow.json</code></pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="example">
-      <h2>Example Usage</h2>
-      <div class="example-tabs">
-        <div class="example-tab">
-          <h3>Python API</h3>
-          <div class="code-block">
-            <pre><code>import asyncio
-from sisypho.utils import RecorderContext, await_task_completion, RpaWorkflow, CuaTool
-
-async def main():
-    # Define your automation task in natural language
-    task_prompt = """Open a CSV file from Downloads in Microsoft Excel, 
-    calculate the total sales column, and paste the result into a new Apple Notes entry. 
-    Use deterministic steps without relying on screen coordinates."""
-
-    with RecorderContext() as recorder:
-        await_task_completion()
-
-    recording = recorder.get_recording()
-    workflow = RpaWorkflow(recording, task_prompt)
-    
-    await workflow.generate_code()
-    result = workflow.run_workflow()
-    workflow.save()</code></pre>
-          </div>
-        </div>
-        <div class="example-tab">
-          <h3>Command Line</h3>
-          <div class="code-block">
-            <pre><code># Same workflow using CLI
-python -m sisypho create --task "Open a CSV file from Downloads in Microsoft Excel, calculate the total sales column, and paste the result into a new Apple Notes entry" --record
-
-# Run the created workflow
-python -m sisypho run --workflow workflow.json
-
-# Or run interactively
-python -m sisypho run --interactive</code></pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="features">
-      <h2>Core Features</h2>
-      <div class="feature-grid">
-        <div class="feature">
-          <h3>Accessibility-Based Automation</h3>
-          <p>Uses UI accessibility APIs and semantic understanding instead of fragile coordinates or selectors</p>
-        </div>
-        <div class="feature">
-          <h3>Deterministic Workflows</h3>
-          <p>Generate reliable, reproducible automation sequences</p>
-        </div>
-        <div class="feature">
-          <h3>MCP Protocol Integration</h3>
-          <p>Automatically expose workflows as MCP tools that computer use agents can discover and execute</p>
-        </div>
-        <div class="feature">
-          <h3>Semantic Recording</h3>
-          <p>Record user interactions and convert them to accessibility-based workflows that work across UI changes</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="mcp-tools">
-      <h2>Custom UI Tools for Computer Use Agents</h2>
-      <p>Sisypho SDK enables you to create reusable UI automation tools that computer use agents can leverage through the MCP protocol. Workflows automatically become powerful automation tools.</p>
-      
-      <div class="mcp-feature">
-        <h3>Workflow-to-Tool Conversion</h3>
-        <p>When you launch the MCP server, Sisypho automatically:</p>
-        <ul>
-          <li>Scans your workflow directory for .json workflow files</li>
-          <li>Registers each workflow as an MCP tool with its task description</li>
-          <li>Exposes the tools via the MCP protocol for agent consumption</li>
-        </ul>
-        
-        <div class="code-block">
-          <pre><code># Directory structure
-./automation-tools/
-├── gmail_automation.json     # Becomes "run_workflow_0" tool
-├── slack_notifications.json  # Becomes "run_workflow_1" tool
-└── data_entry.json          # Becomes "run_workflow_2" tool
-
-# Launch MCP server
-python -m sisypho mcp --workflow-directory ./automation-tools</code></pre>
-        </div>
-      </div>
-
-      <div class="mcp-feature">
-        <h3>Agent Integration</h3>
-        <p>Computer use agents can discover and execute your custom UI tools:</p>
-        <div class="code-block">
-          <pre><code># Agent discovers available tools
-tools = await mcp_client.list_tools()
-# Returns: [
-#   {"name": "run_workflow_0", "description": "Automate Gmail inbox management"},
-#   {"name": "run_workflow_1", "description": "Send Slack status updates"},
-#   {"name": "run_workflow_2", "description": "Fill customer data forms"}
-# ]
-
-# Agent executes UI automation
-result = await mcp_client.call_tool("run_workflow_0", {})
-# Sisypho performs the recorded Gmail automation workflow</code></pre>
-        </div>
-      </div>
-
-      <div class="mcp-feature">
-        <h3>Specialized Tool Libraries</h3>
-        <p>Create domain-specific tool libraries for different use cases:</p>
-        <div class="tool-examples">
-          <div class="tool-category">
-            <h4>Business Tools</h4>
-            <div class="code-block">
-              <pre><code>./business-tools/
-├── calendar_management.json
-├── email_templates.json
-└── report_generation.json</code></pre>
-            </div>
-          </div>
-          <div class="tool-category">
-            <h4>Development Tools</h4>
-            <div class="code-block">
-              <pre><code>./dev-tools/
-├── github_pr_workflow.json
-├── deployment_checks.json
-└── code_review_automation.json</code></pre>
-            </div>
-          </div>
-        </div>
-        <p>Each directory becomes a specialized MCP server providing domain-specific UI automation capabilities to computer use agents.</p>
-      </div>
-    </section>
-
-    <section class="cli-reference">
-      <h2>CLI Reference</h2>
-      <div class="cli-help">
-        <div class="code-block">
-          <pre><code>$ python -m sisypho --help
-
-usage: python -m sisypho [-h] {create,run,mcp} ...
-
-Sisypho SDK - UI automation, workflow recording, and skill execution
-
-positional arguments:
-  {create,run,mcp}  Available commands
-    create          Create a new workflow (optionally with recording)
-    run             Run an existing workflow
-    mcp             Launch MCP server to expose workflows as tools
-
-options:
-  -h, --help        show this help message and exit
-
-Examples:
-  python -m sisypho create --task "open chrome and type hello"
-  python -m sisypho create --task "open chrome and type hello" --record
-  python -m sisypho run --workflow workflow.json
-  python -m sisypho run --interactive
-  python -m sisypho mcp --workflow-directory ./automation-tools</code></pre>
-        </div>
-      </div>
-      
-      <div class="cli-commands">
-        <div class="cli-command">
-          <h3>create</h3>
-          <p>Create new automation workflows from natural language descriptions</p>
-          <div class="code-block">
-            <pre><code># Basic workflow creation
-python -m sisypho create --task "open notepad and write hello world"
-
-# Create with user interaction recording
-python -m sisypho create --task "fill out contact form" --record</code></pre>
-          </div>
-        </div>
-        
-        <div class="cli-command">
-          <h3>run</h3>
-          <p>Execute existing workflows or start interactive sessions</p>
-          <div class="code-block">
-            <pre><code># Run a saved workflow
-python -m sisypho run --workflow my_workflow.json
-
-# Interactive mode for testing
-python -m sisypho run --interactive</code></pre>
-          </div>
-        </div>
-        
-        <div class="cli-command">
-          <h3>mcp</h3>
-          <p>Launch MCP server to expose workflows as tools for computer use agents</p>
-          <div class="code-block">
-            <pre><code># Launch MCP server with workflow directory
-python -m sisypho mcp --workflow-directory ./automation-tools
-
-# Workflows become discoverable tools for agents
-# Each .json file becomes an executable MCP tool</code></pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="api-reference">
-      <h2>Python API Reference</h2>
-      <div class="api-section">
-        <h3>RecorderContext</h3>
-        <p>Context manager for capturing user interactions</p>
-        <div class="code-block">
-          <pre><code>with RecorderContext() as recorder:
-    # Your interactions are recorded here
-    recording = recorder.get_recording()</code></pre>
-        </div>
-      </div>
-      
-      <div class="api-section">
-        <h3>RpaWorkflow</h3>
-        <p>Main workflow orchestrator for automation tasks</p>
-        <div class="code-block">
-          <pre><code>workflow = RpaWorkflow(recording, task_prompt)
-await workflow.generate_code()
-result = workflow.run_workflow()</code></pre>
-        </div>
-      </div>
-
-      <div class="api-section">
-        <h3>CuaTool</h3>
-        <p>Tools for integrating deterministic workflows with CUA agents</p>
-        <div class="code-block">
-          <pre><code>cua_tools = CuaTool(recording, task_prompt)
-# Use with your own CUA implementation</code></pre>
-        </div>
-      </div>
-    </section>
-
-    <section class="getting-started">
-      <h2>Getting Started</h2>
-      <div class="steps">
-        <div class="step">
-          <span class="step-number">1</span>
-          <div>
-            <h4>Install</h4>
-            <p><code>pip install sisypho</code></p>
-          </div>
-        </div>
-        <div class="step">
-          <span class="step-number">2</span>
-          <div>
-            <h4>Create Workflow</h4>
-            <p>Use CLI: <code>python -m sisypho create --task "your task"</code><br>
-            Or Python API with RecorderContext</p>
-          </div>
-        </div>
-        <div class="step">
-          <span class="step-number">3</span>
-          <div>
-            <h4>Run & Automate</h4>
-            <p>Execute with <code>python -m sisypho run</code><br>
-            Or programmatically via RpaWorkflow</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="links">
-      <div class="link-grid">
-        <a href="https://github.com/HarishgunaS/sisypho-sdk" class="link-card">
-          <div class="github-logo">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-          </div>
-          <p>Source code and examples</p>
-        </a>
-      </div>
-    </section>
   </main>
+  <footer>
+    © 2025 Zero One Labs Inc. &nbsp;|&nbsp; Headquartered in Toronto, Canada
+  </footer>
 </body>
 </html>
